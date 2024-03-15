@@ -1,63 +1,18 @@
-<?php include('includes/header.php'); ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
 
 <body>
-    <!-- bootstrap navbar -->
-    <?php include('includes/navbar.php'); ?>
-
-    <!-- <h1 class="text-center p-5 ">Expense tracker App</h1> -->
-
-    <!-- <div class="containe-fuild justify-content-center "> -->
-    <!-- <div class="container">
-        <div class="d-flex justify-content-center">
-
-            <form action="" method="post">
-
-                <label for="" class="form-label">Catergories :</label>
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect02">Category</label>
-                    <select class="form-select" id="inputGroupSelect02">
-                        <option selected>Choose...</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
-
-                <div class="row g-3">
-                    <div class="col">
-                        <label for="" class="form-label">Amount :</label>
-                        <input type="number" class="form-control" name="amount">
-                    </div>
-                </div>
-                <div class="row g-3 pt-3">
-                    <div class="col">
-                        <label for="exampleFormControlTextarea1" class="form-label">Spent On :</label>
-                        <textarea class="form-control" name="description" rows="2"></textarea>
-                    </div>
-                </div>
-                <div class="row g-3">
-                    <div class="co pt-3">
-                        <button type="button" class="btn btn-outline-primary">Primary</button>
-                    </div>
-                </div>
-
-            </form>
-        </div>
-
-
-        <div class="card">
-            <div class="card-header">
-                Quote
-            </div>
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <p>A well-known quote, contained in a blockquote element.</p>
-                    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-                </blockquote>
-            </div>
-        </div>
-
-    </div> -->
 
     <div class="container mt-5">
         <h1 class="text-center mb-4">Expense Tracker</h1>
@@ -68,7 +23,9 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="expenseModalLabel">Add Expense</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <form id="expenseForm">
@@ -94,7 +51,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary" id="addExpenseBtn">Add Expense</button>
                     </div>
                 </div>
@@ -116,24 +73,22 @@
         </div>
     </div>
 
-
-
     <!-- Floating plus button -->
-    <button type="button" class="fixed-button whb text-center" data-bs-toggle="modal" data-bs-target="#expenseModal">
+    <button type="button" class="fixed-button whb text-center" data-toggle="modal" data-target="#expenseModal">
         <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5z" />
         </svg> -->
-
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
         </svg>
     </button>
 
 
+
     <!-- Bootstrap JS and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
         // Function to add an expense to the list
@@ -164,7 +119,6 @@
         });
     </script>
 
+</body>
 
-    <!-- footer -->
-
-    <?php include('includes/footer.php'); ?>
+</html>

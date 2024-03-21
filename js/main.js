@@ -3,6 +3,8 @@ $(document).ready(function () {
 
     // console.log('Document ready start');
 
+    // <________  Categories.php Functions  ________>
+
     // ----adding category in categories table with ajax
 
     $('input[name="submit_category"]').click(function () {
@@ -20,8 +22,8 @@ $(document).ready(function () {
                     data: { category: category },
                     success: function (data) {
                         // console.log(data);
-                        // loadCategories();
-                        loadCategory();
+                        loadCategories();
+                        // loadCategory();
 
                     },
                     error: function (xhr, status, error) {
@@ -69,7 +71,7 @@ $(document).ready(function () {
                 data: { id: id },
                 success: function (data) {
                     // console.log(data);
-                    loadCategory();
+                    loadCategories();
                 },
                 error: function (xhr, status, error) {
                     console.error(xhr);
@@ -115,7 +117,7 @@ $(document).ready(function () {
                 data: { e_id: id, editCategory: name },
                 success: function (data) {
                     console.log(data);
-                    loadCategory();
+                    loadCategories();
                 },
                 error: function (xhr, status, error) {
                     console.error(xhr);
@@ -138,14 +140,50 @@ $(document).ready(function () {
         // })
     })
 
+    // <________  Categories.php Functions END  ________>
+
+    // <________  index.php Functions  ________>
+
+    $('#addExpenseBtn').click(function () {
+        // console.log('click');
+
+        const expenseName = $('#expenseName').val();
+        const expenseAmount = $('#expenseAmount').val();
+        const categoryId = $('#categoryId').val();
+
+        // console.log(expenseName, expenseAmount, categoryId);
+
+        const data = $.ajax({
+            url: API_URL + 'addExpense.php',
+            type: 'POST',
+            data: { expenseName: expenseName, expenseAmount: expenseAmount, categoryId: categoryId },
+            success: function (data) {
+                console.log(data);
+                loadExpenses();
+                // loadCategory();
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr);
+            }
+        })
+
+        // Hide modal after adding expense
+        $('#expenseModal').modal('hide');
+
+    })
+
+
+
+    // <________  Categories.php Functions END ________>
+
     // console.log('Domument End');
 
 });
 
-// console.log('Main end');
+// console.log('Main Start');
 
 const API_URL = 'http://localhost/expense_tracker/api/';
-function loadCategories() {
+function loadCategory() {
 
     $.ajax({
         url: API_URL + 'getCategory.php',
@@ -170,7 +208,7 @@ function loadCategories() {
     });
 }
 
-function loadCategory() {
+function loadCategories() {
 
     // console.log('loadCategory function');
     $.ajax({
@@ -180,6 +218,7 @@ function loadCategory() {
         success: function (data) {
             // console.log(data);
             // Process the array of data and display it on the webpage
+            var currentTime = new Date().toLocaleString();
             var outputHtml = '<div>';
             data.forEach(function (json) {
                 outputHtml += `
@@ -211,6 +250,167 @@ function loadCategory() {
         }
     });
 }
+
+function loadExpenses() {
+    $.ajax({
+        url: API_URL + 'getExpense.php',
+        type: 'GET',
+        dataType: 'json',  // Change the data type according to your response
+        success: function (data) {
+            // console.log(data);
+            const expenseList = $('#expenseListing');
+            // console.log(expenseList);
+
+            let htmlOutput = ``;
+            data.forEach(function (json) {
+                // console.log(json);
+                htmlOutput += `
+                <div class="card shadow mb-4">
+                    <div class="row g-0">
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h2 class="card-title">${json.name}</h2>
+                                <p class="card-text">
+                                    <span class="badge text-bg-success">${json.categoryName}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 ">
+                            <div class="d-flex align-content-center flex-wrap">
+                                <p class="fs-1 fw-bold text-danger">
+                                    <i class="bi bi-currency-rupee"></i>${json.amount}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="blockquote-footer card-text text-end">
+                        <small class="text-body-secondary">
+                        ${json.createdAt} Ago
+                            <span class="blockquote-footer"></span>
+                        </small>
+                    </p>
+                </div>
+                `
+            })
+            // console.log(htmlOutput);
+            expenseList.html(htmlOutput);
+        }
+
+
+    })
+}
+
+// Function to add an expense to the list
+function addExpense() {
+    const name = document.getElementById('expenseName').value;
+    const amount = document.getElementById('expenseAmount').value;
+
+    if (name === '' || amount === '') {
+        alert('Please enter both name and amount');
+        return;
+    }
+
+    var listItem = document.createElement('li');
+    listItem.classList.add('list-group-item');
+    listItem.innerHTML = `<strong>${name}</strong>: $${amount}`;
+
+    document.getElementById('expenseList').appendChild(listItem);
+
+    // Clear input fields
+    document.getElementById('expenseName').value = '';
+    document.getElementById('expenseAmount').value = '';
+}
+function loadPieChart() {
+
+    const ctx = document.getElementById('myChart');
+    const expenseData = $.ajax({
+        url: API_URL + 'getCategoryExpense.php',
+        type: 'POST',
+        dataType: 'Json',
+        success: function (json) {
+            console.log(json);
+            const uniqueCategoryName = json.map(row => row.categoryName);
+            const totalExpense = json.map(row => row.totalExpense);
+            const colors = ['Red', 'Blue', 'Green', 'Pink', 'Yellow', 'Purple', 'Maroon', 'Gold', 'rgb(241, 26, 123)', 'rgb(21, 245, 186)', 'rgb(165, 85, 236)', 'rgb(255, 187, 100)', 'rgb(192, 74, 130)'];
+            console.log(uniqueCategoryName, totalExpense);
+
+            const data = {
+                labels: uniqueCategoryName,
+                datasets: [{
+                    label: 'Total Expenses Per Category',
+                    data: totalExpense,
+                    backgroundColor: colors,
+                    borderColor: '#CCD3CA',
+                    hoverOffset: 4
+                }]
+            };
+
+            const config = {
+                type: 'doughnut',
+                data: data,
+            };
+
+            new Chart(ctx, config);
+
+        }
+
+
+    })
+
+    // const data = {
+    //     labels: [
+    //         'Samosa',
+    //         'New',
+    //         'Gaming'
+    //     ],
+    //     datasets: [{
+    //         label: 'Total Expenses',
+    //         data: [300, 50, 100],
+    //         backgroundColor: [
+    //             'rgb(255, 99, 132)',
+    //             'rgb(54, 162, 235)',
+    //             'rgb(255, 205, 86)'
+    //         ],
+    //         hoverOffset: 4
+    //     }]
+    // };
+
+    // const config = {
+    //     type: 'doughnut',
+    //     data: data,
+    // };
+
+    // new Chart(ctx, config);
+
+}
+
+// const data = {
+//     labels: [
+//         'Samosa',
+//         'New',
+//         'Gaming'
+//     ],
+//     datasets: [{
+//         label: 'Total Expenses',
+//         data: [300, 50, 100],
+//         backgroundColor: [
+//             'rgb(255, 99, 132)',
+//             'rgb(54, 162, 235)',
+//             'rgb(255, 205, 86)'
+//         ],
+//         hoverOffset: 4
+//     }]
+// };
+
+// const config = {
+//     type: 'doughnut',
+//     data: data,
+// };
+
+// new Chart(ctx, config);
+
+
+
 
 
 // console.log('Main end');

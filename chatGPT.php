@@ -8,8 +8,25 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .expense-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.8);
+        }
 
+        .expense-category {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .expense-time {
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
 </head>
 
 <body>
@@ -34,19 +51,12 @@
                                 <input type="text" class="form-control" id="expenseName" placeholder="Enter expense name">
                             </div>
                             <div class="form-group">
-                                <label for="expenseAmount">Amount</label>
-                                <input type="number" class="form-control" id="expenseAmount" placeholder="Enter amount">
+                                <label for="expenseCategory">Category</label>
+                                <input type="text" class="form-control" id="expenseCategory" placeholder="Enter expense category">
                             </div>
-
-                            <!-- <label for="" class="form-label">Catergories :</label> -->
-                            <div class="input-group mb-3">
-                                <label class="input-group-text" for="inputGroupSelect02">Category: </label>
-                                <select class="form-select" id="inputGroupSelect02">
-                                    <option selected>Choose...</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
+                            <div class="form-group">
+                                <label for="expenseAmount">Price</label>
+                                <input type="number" class="form-control" id="expenseAmount" placeholder="Enter price">
                             </div>
                         </form>
                     </div>
@@ -59,31 +69,13 @@
         </div>
 
         <!-- Expense List -->
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                        Expense List
-                    </div>
-                    <ul class="list-group list-group-flush" id="expenseList">
-                        <!-- Expense items will be added dynamically here -->
-                    </ul>
-                </div>
-            </div>
+        <div class="row" id="expenseList">
+            <!-- Expense cards will be added dynamically here -->
         </div>
     </div>
 
     <!-- Floating plus button -->
-    <button type="button" class="fixed-button whb text-center" data-toggle="modal" data-target="#expenseModal">
-        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5z" />
-        </svg> -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
-        </svg>
-    </button>
-
-
+    <button type="button" class="btn btn-primary fixed-bottom mb-4 mr-4" data-toggle="modal" data-target="#expenseModal">+</button>
 
     <!-- Bootstrap JS and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -94,21 +86,33 @@
         // Function to add an expense to the list
         function addExpense() {
             var name = document.getElementById('expenseName').value;
+            var category = document.getElementById('expenseCategory').value;
             var amount = document.getElementById('expenseAmount').value;
+            var currentTime = new Date().toLocaleString();
 
-            if (name === '' || amount === '') {
-                alert('Please enter both name and amount');
+            if (name === '' || category === '' || amount === '') {
+                alert('Please enter all details');
                 return;
             }
 
-            var listItem = document.createElement('li');
-            listItem.classList.add('list-group-item');
-            listItem.innerHTML = `<strong>${name}</strong>: $${amount}`;
+            var expenseCard = `
+      <div class="col-md-4">
+        <div class="card expense-card">
+          <div class="card-body">
+            <h5 class="card-title">${name}</h5>
+            <p class="card-text expense-category">Category: ${category}</p>
+            <p class="card-text">Price: $${amount}</p>
+            <p class="card-text expense-time">Created: ${currentTime}</p>
+          </div>
+        </div>
+      </div>
+    `;
 
-            document.getElementById('expenseList').appendChild(listItem);
+            $('#expenseList').append(expenseCard);
 
             // Clear input fields
             document.getElementById('expenseName').value = '';
+            document.getElementById('expenseCategory').value = '';
             document.getElementById('expenseAmount').value = '';
         }
 

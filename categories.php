@@ -85,9 +85,9 @@
     <!-- footer -->
     <script>
         $(document).ready(function() {
-            // loadCategories();
+            loadCategories();
             // console.log('Load Category Page Jquery');
-            loadCategory();
+            // loadCategory();
         });
     </script>
     <?php include('includes/footer.php'); ?>

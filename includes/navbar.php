@@ -17,6 +17,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="categories.php">Categories</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="analytics.php">Analytics</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown

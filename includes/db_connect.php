@@ -11,3 +11,11 @@ function redirect($url)
     header('location: ' . $url);
     die();
 }
+
+function checkQuery($result)
+{
+    if (!$result) {
+        die("Connection Failed : " . mysqli_connect_error($result));
+        // mysqli_error();
+    }
+}

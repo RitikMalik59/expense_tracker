@@ -136,7 +136,7 @@
                 </div>
             </div>
 
-            <div class="card shadow mb-4">
+            <!-- <div class="card shadow mb-4">
                 <div class="row g-0">
                     <div class="col-md-9">
                         <div class="card-body">
@@ -160,7 +160,7 @@
                         <span class="blockquote-footer"></span>
                     </small>
                 </p>
-            </div>
+            </div> -->
 
             <div id="expenseListing">
 
@@ -200,7 +200,7 @@
                 </div>
             </div>
 
-            <div class="card expense-card mb-2">
+            <!-- <div class="card expense-card mb-2">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
                         <div>Categories</div>
@@ -231,10 +231,7 @@
                         <footer class="blockquote-footer">11-3-2024 <cite title="Source Title">Ago</cite></footer>
                     </blockquote>
                 </div>
-            </div>
-
-
-
+            </div> -->
 
         </div>
 

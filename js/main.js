@@ -328,11 +328,11 @@ function loadPieChart() {
         type: 'POST',
         dataType: 'Json',
         success: function (json) {
-            console.log(json);
+            // console.log(json);
             const uniqueCategoryName = json.map(row => row.categoryName);
             const totalExpense = json.map(row => row.totalExpense);
             const colors = ['Red', 'Blue', 'Green', 'Pink', 'Yellow', 'Purple', 'Maroon', 'Gold', 'rgb(241, 26, 123)', 'rgb(21, 245, 186)', 'rgb(165, 85, 236)', 'rgb(255, 187, 100)', 'rgb(192, 74, 130)'];
-            console.log(uniqueCategoryName, totalExpense);
+            // console.log(uniqueCategoryName, totalExpense);
 
             const data = {
                 labels: uniqueCategoryName,
@@ -357,60 +357,53 @@ function loadPieChart() {
 
     })
 
-    // const data = {
-    //     labels: [
-    //         'Samosa',
-    //         'New',
-    //         'Gaming'
-    //     ],
-    //     datasets: [{
-    //         label: 'Total Expenses',
-    //         data: [300, 50, 100],
-    //         backgroundColor: [
-    //             'rgb(255, 99, 132)',
-    //             'rgb(54, 162, 235)',
-    //             'rgb(255, 205, 86)'
-    //         ],
-    //         hoverOffset: 4
-    //     }]
-    // };
-
-    // const config = {
-    //     type: 'doughnut',
-    //     data: data,
-    // };
-
-    // new Chart(ctx, config);
-
 }
 
-// const data = {
-//     labels: [
-//         'Samosa',
-//         'New',
-//         'Gaming'
-//     ],
-//     datasets: [{
-//         label: 'Total Expenses',
-//         data: [300, 50, 100],
-//         backgroundColor: [
-//             'rgb(255, 99, 132)',
-//             'rgb(54, 162, 235)',
-//             'rgb(255, 205, 86)'
-//         ],
-//         hoverOffset: 4
-//     }]
-// };
+function loadCategoryTable() {
+    const table = $('#loadCategoryTable');
+    // console.log(table);
 
-// const config = {
-//     type: 'doughnut',
-//     data: data,
-// };
+    const data = $.ajax({
 
-// new Chart(ctx, config);
+        url: API_URL + 'getCategoryExpense.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function (json) {
+            // console.log(json);
+            let categoryTable = `
+            <div class="table-responsive">
+                <table class="table table-hover table-borderless caption-top">
+                    <caption class="text-center fw-bold">List of Total Expenses Per Category</caption>
+                    <thead>
+                        <tr>
+                            <!-- <th scope="col">#</th> -->
+                            <th class="text-center" scope="col">Category</th>
+                            <th class="text-center" scope="col">Total Expenses</th>
+                            <!-- <th scope="col">Handle</th> -->
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+            `;
+            json.forEach(th => {
+                categoryTable += `
+                <tr>
+                    <td scope="row" class="text-center">${th.categoryName}</td>
+                    <td scope="row" class="text-center">₹ ${th.totalExpense}</td>
+                </tr>`
+            });
+            categoryTable += `
+                    </tbody>
+                </table>
+            </div>
+            `;
 
+            table.html(categoryTable);
 
+        }
 
+    })
+
+}
 
 
 // console.log('Main end');

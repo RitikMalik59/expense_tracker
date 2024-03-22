@@ -90,6 +90,7 @@
         $(document).ready(function() {
             loadPieChart();
             loadCategoryTable();
+            init();
         })
     </script>
 

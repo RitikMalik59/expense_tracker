@@ -86,6 +86,7 @@
     <script>
         $(document).ready(function() {
             loadCategories();
+            init();
             // console.log('Load Category Page Jquery');
             // loadCategory();
         });

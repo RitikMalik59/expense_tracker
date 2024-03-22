@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar">
+<nav class="navbar navbar-dark bg-dark fixed-top mb-4" aria-label="Dark offcanvas navbar">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.php">Expense Tracker App</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark" aria-controls="offcanvasNavbarDark" aria-label="Toggle navigation">
@@ -12,7 +12,7 @@
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                        <a class="nav-link" aria-current="page" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="categories.php">Categories</a>

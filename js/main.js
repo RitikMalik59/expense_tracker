@@ -83,7 +83,7 @@ $(document).ready(function () {
 
     $('#category_cards').on('click', 'input[name="edit"]', function () {
         // console.log('edit');
-        const id = $(this).attr('id')
+        const id = $(this).attr('id');
         const categoryName = $(this).parent().find("p").text();
         // console.log(id);
         // console.log(categoryName);
@@ -107,23 +107,31 @@ $(document).ready(function () {
             const inputEdit = $('input[name="editCategory"]');
             const id = inputEdit.attr('id');
             const name = inputEdit.val();
+            // console.log(id, name, inputEdit);
 
-            // console.log(id, name);
+            if (id != '' && name != '') {
+                console.log('value');
+                const data = $.ajax({
 
-            const data = $.ajax({
+                    url: './api/editCategory.php',
+                    type: 'POST',
+                    data: { e_id: id, editCategory: name },
+                    success: function (data) {
+                        // console.log(data);
+                        loadCategories();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr);
+                    }
 
-                url: './api/editCategory.php',
-                type: 'POST',
-                data: { e_id: id, editCategory: name },
-                success: function (data) {
-                    console.log(data);
-                    loadCategories();
-                },
-                error: function (xhr, status, error) {
-                    console.error(xhr);
-                }
+                })
+            } else {
 
-            })
+                console.log('Please enter category name');
+            }
+
+
+
 
         })
 
@@ -256,6 +264,7 @@ function loadExpenses() {
         url: API_URL + 'getExpense.php',
         type: 'GET',
         dataType: 'json',  // Change the data type according to your response
+
         success: function (data) {
             // console.log(data);
             const expenseList = $('#expenseListing');
@@ -405,5 +414,18 @@ function loadCategoryTable() {
 
 }
 
+function activeNavbar() {
+    document.querySelectorAll(".nav-link").forEach((link) => {
+        // console.log(link);
+        if (link.href === window.location.href) {
+            link.classList.add("active");
+            link.setAttribute("aria-current", "page");
+        }
+    });
+}
 
+function init() {
+    activeNavbar();
+}
+init();
 // console.log('Main end');

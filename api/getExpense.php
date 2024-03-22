@@ -33,6 +33,9 @@ if ($numRow > 0) {
     // echo '<pre>'  . var_dump($JsonData) . '</pre>';
 
     header('Content-Type: application/json');
+    // header("Access-Control-Allow-Origin", "*");
+    // header("Access-Control-Allow-Methods", "POST, GET, PUT");
+    // header("Access-Control-Allow-Headers", "Content-Type");
     echo $JsonData;
 } else {
     echo "No Records Found";

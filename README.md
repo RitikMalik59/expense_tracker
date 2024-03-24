@@ -1,46 +1,33 @@
-<<<<<<< HEAD
-git 
-=======
-# Expense tracker
-# Next.Js Website Tutorial: Create a Stunning Portfolio Website with Nextjs, Tailwind CSS and Framer-motion🌟
+# Expense Tracker Application
+ A PHP application for tracking expenses.
+ # PHP Expense Tracking Application
 
-![GitHub stars](https://img.shields.io/github/stars/codebucks27/Next.js-Developer-Portfolio-Starter-Code?style=social&logo=ApacheSpark&label=Stars)&nbsp;&nbsp;
-![GitHub forks](https://img.shields.io/github/forks/codebucks27/Next.js-Developer-Portfolio-Starter-Code?style=social&logo=KashFlow&maxAge=3600)&nbsp;&nbsp;
-![Github Followers](https://img.shields.io/github/followers/codebucks27.svg?style=social&label=Follow)&nbsp;&nbsp;<br />
+## Overview
 
-This repository contains starter code for Portfolio website created using NextJs. <br />
+Expense tracking provides a detailed overview of where money is being spent.
+The Expense Tracker Application aims to provide a user-friendly solution for tracking expenses, categorizing spending, and gaining insights into financial habits. Improved cash flow: The process can help identify areas where cash flow can be improved, such as reducing unnecessary expenses or improving payment terms.
 
-For Demo and Final Code checkout following link👇: <br />
-[Nextjs Portfolio Website](https://devdreaming.com//videos/nextjs-tutorial-build-portfolio-tailwind-css-framer-motion#code-links) <br />
+## Features
 
-If you want to learn how to create it please follow below tutorial👇: <br />
-https://youtu.be/Yw7yWHigGKI <br />
-[![YouTube Video Views](https://img.shields.io/youtube/views/Yw7yWHigGKI?style=social)](https://youtu.be/Yw7yWHigGKI)<br />
+- **Add Expense Entry**: Easily input new expenses, providing details such as name, amount, and category.
+- **Manage Categories**: Organize expenses into different categories for improved organization and Analysis.
+- **Analytics**: Analysis of total expenses in respected category.
+- **Responsive Design**: Access the application seamlessly across various devices, including desktops, tablets, and mobiles.
 
-### Images of The Portfolio Website:
+## Getting Started
 
-![Nextjs Portfolio Website]([https://github.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/blob/main/website%20images/home-light-desktop.png](https://github.com/RitikMalik59/expense_tracker/blob/master/website_image/download_4.jpg))
-![Nextjs Portfolio Website Dark Mode](https://github.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/blob/main/website%20images/home-dark-desktop.png)
-![Next.js Portfolio Website](https://github.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/blob/main/website%20images/about-light-desktop.png)
-![Next js Portfolio Website](https://github.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/blob/main/website%20images/projects-dark-desktop.png)
-![Portfolio Website In Next.js](https://github.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/blob/main/website%20images/articles-light-desktop.png)
-![Responsive Portfolio Website In Nextjs](https://github.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/blob/main/website%20images/about-light-mobile.png)
-![Responsive Portfolio Website In Next js](https://github.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/blob/main/website%20images/projects-light-mobile.png)
-![Mobile Responsive Portfolio Website In Next.js](https://github.com/codebucks27/Next.js-Developer-Portfolio-Starter-Code/blob/main/website%20images/articles-light-mobile.png)
+### Prerequisites
 
+- Web server with PHP support (eg: Apache )
+- MySQL database
+- PHP 7.0 or later
+- Composer for dependency management
 
-### Resources Used in This Project
+### Installation
 
-- Profile image in the home page created by using https://www.midjourney.com/ tool.
-- Profile image in the about page by [Albert Dera](https://unsplash.com/@albertdera?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) 
-on [Unsplash](https://unsplash.com/photos/ILip77SbmOE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
-- Fonts from https://fonts.google.com/ <br />
-- Icons from https://iconify.design/ <br />
-- LightBulb Svg from https://lukaszadam.com/illustrations <br />
+1. **Clone the repository:**
 
-### External Libraries used in this project:
+   ```bash
+   git clone https://github.com/your-username/expense_tracker.git
 
-- [framer-motion](https://www.framer.com/motion/) <br />
-- [Tailwind css](https://tailwindcss.com/) <br />
-
->>>>>>> 94a637544bde2926ca6aca9277c2f04cabf65a47
+2. **Import the sql into your Database from sql folder.**

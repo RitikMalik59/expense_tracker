@@ -31,3 +31,5 @@ The Expense Tracker Application aims to provide a user-friendly solution for tra
    git clone https://github.com/your-username/expense_tracker.git
 
 2. **Import the sql into your Database from sql folder.**
+
+3. **View Expense Tracker website images in website_images folder.**

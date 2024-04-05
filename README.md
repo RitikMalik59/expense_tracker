@@ -5,7 +5,22 @@
 ## Overview
 
 Expense tracking provides a detailed overview of where money is being spent.
-The Expense Tracker Application aims to provide a user-friendly solution for tracking expenses, categorizing spending, and gaining insights into financial habits. Improved cash flow: The process can help identify areas where cash flow can be improved, such as reducing unnecessary expenses or improving payment terms.
+The Expense Tracker Application aims to provide a user-friendly solution for tracking expenses, categorizing spending, and gaining insights into financial habits.<br> 
+Improved cash flow: The process can help identify areas where cash flow can be improved, such as reducing unnecessary expenses or improving payment terms.
+
+## Expense Tracker images
+ ### Home Page
+ ![alt text](https://github.com/RitikMalik59/expense_tracker/blob/master/website_image/home_page.png?raw=true)
+ ### Add Expense
+ ![alt text](https://github.com/RitikMalik59/expense_tracker/blob/master/website_image/add_expense.png?raw=true)
+ ### Category Page
+ ![alt text](https://github.com/RitikMalik59/expense_tracker/blob/master/website_image/add_category.png?raw=true)
+ ### Edit Category
+ ![alt text](https://github.com/RitikMalik59/expense_tracker/blob/master/website_image/edit_category.png?raw=true)
+ ### Delete Category
+ ![alt text](https://github.com/RitikMalik59/expense_tracker/blob/master/website_image/delete_category.png?raw=true)
+ ### Analytics Page
+ ![alt text](https://github.com/RitikMalik59/expense_tracker/blob/master/website_image/analytics_page.png?raw=true)
 
 ## Features
 

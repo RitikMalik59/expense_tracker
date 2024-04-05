@@ -21,6 +21,7 @@ if ($result->num_rows > 0) {
 
     // Convert data array to JSON format
     $json_data = json_encode($data, JSON_PRETTY_PRINT);
+    $json_data = json_encode($data, JSON_PRETTY_PRINT);
     // echo '<pre>', var_dump($json_data), '</pre>';
 
     // Output JSON data
